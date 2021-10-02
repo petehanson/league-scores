@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>{{title}}</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{title}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Enter Scores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <main class="container">
+    <div class="bg-light p-2 rounded">
+        <h1>Enter Scores</h1>
+        <p class="lead">Use this form to record each set's score for your court.</p>
+
+        <form id='leagueForm'>
+            <div class="mb-2">
+                <select class="form-select mb-2" aria-label="League Group" name="leagueGroup" id="leagueGroup">
+                    <option>Select League Group</option>
+                    <option>Monday Night @ 6:30 PM</option>
+                    <option>Tuesday Morning @ 9:00 AM</option>
+                    <option>Wednesday Evening @ 6:00 PM</option>
+                </select>
+            </div>
+        </form>
+
+        <form id="scoreForm">
+            <div class="mb-3">
+                <select class="form-select mb-2" aria-label="Session" name="session" id="session">
+                    <option>Select Session</option>
+                    <option>10/04/2021</option>
+                    <option>10/11/2021</option>
+                    <option>10/18/2021</option>
+                </select>
+                <select class="form-select mb-2" aria-label="Court" name="court" id="court">
+                    <option>Select Court</option>
+                    <option>Court 1</option>
+                    <option>Court 2</option>
+                    <option>Court 3</option>
+                    <option>Court 4</option>
+                </select>
+                <select class="form-select" aria-label="Set" name="set" id="set">
+                    <option>Select Set</option>
+                    <option>Set 1</option>
+                    <option>Set 2</option>
+                    <option>Set 3</option>
+                </select>
+
+
+            </div>
+
+            <fieldset class="mb-3">
+                <legend>Team 1</legend>
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="mb-3">
+                        <select class="form-select" aria-label="Select Player" name="player1" id="player1">
+                            <option value="">Select Player</option>
+                            <option>Peter Hanson</option>
+                            <option>Kate Hanson</option>
+                            <option>Tom Nordoff</option>
+                            <option>Ashley Goreczny</option>
+                            <option>Andy Goreczny</option>
+                        </select>
+                        <input type="checkbox" class="form-check-input" value="1" id="hasSub1" name="hasSub1"/>
+                        <label class="form-check-label" for="hasSub1">Has Sub</label>
+                        
+                        </div>
+
+                        <div class="mb-3">
+                        <select class="form-select" aria-label="Select Player" name="player2" id="player2">
+                            <option value="">Select Player</option>
+                            <option>Peter Hanson</option>
+                            <option>Kate Hanson</option>
+                            <option>Tom Nordoff</option>
+                            <option>Ashley Goreczny</option>
+                            <option>Andy Goreczny</option>
+                        </select>
+                        <input type="checkbox" class="form-check-input" value="1" id="hasSub2" name="hasSub2"/>
+                        <label class="form-check-label" for="hasSub2">Has Sub</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-4">
+                        <select id="score1" name="score1" class="form-select" aria-label="Score">
+                            <option value="">Score</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <fieldset class="mb-3">
+                <legend>Team 2</legend>
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="mb-3">
+                        <select class="form-select" aria-label="Select Player" name="player3" id="player3">
+                            <option value="">Select Player</option>
+                            <option>Peter Hanson</option>
+                            <option>Kate Hanson</option>
+                            <option>Tom Nordoff</option>
+                            <option>Ashley Goreczny</option>
+                            <option>Andy Goreczny</option>
+                        </select>
+                        <input type="checkbox" class="form-check-input" value="1" id="hasSub3" name="hasSub3"/>
+                        <label class="form-check-label" for="hasSub3">Has Sub</label>
+                        
+                        </div>
+
+                        <div class="mb-3">
+                        <select class="form-select" aria-label="Select Player" name="player4" id="player4">
+                            <option value="">Select Player</option>
+                            <option>Peter Hanson</option>
+                            <option>Kate Hanson</option>
+                            <option>Tom Nordoff</option>
+                            <option>Ashley Goreczny</option>
+                            <option>Andy Goreczny</option>
+                        </select>
+                        <input type="checkbox" class="form-check-input" value="1" id="hasSub4" name="hasSub4"/>
+                        <label class="form-check-label" for="hasSub4">Has Sub</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-4">
+                        <select id="score2" name="score2" class="form-select" aria-label="Score">
+                            <option value="">Score</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        window.addEventListener('load',(event)=>{
+            console.log("dom loaded");
+            var el = document.querySelector("#leagueGroup");
+            if (el) {
+                el.addEventListener("change",(event)=>{
+                    console.log(event.target);
+                    console.log(event.target.value);
+                });
+            }
+        });
+    
+    </script>
+</body>
+</html>
+
