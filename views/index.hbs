@@ -39,40 +39,39 @@
         <h1>Enter Scores</h1>
         <p class="lead">Use this form to record each set's score for your court.</p>
 
+        <!--
         <form id='leagueForm'>
             <div class="mb-2">
                 <select class="form-select mb-2" aria-label="League Group" name="leagueGroup" id="leagueGroup">
                     <option>Select League Group</option>
-                    <option>Monday Night @ 6:30 PM</option>
-                    <option>Tuesday Morning @ 9:00 AM</option>
-                    <option>Wednesday Evening @ 6:00 PM</option>
+                    {{#each leagues}}
+                        <option value="{{key}}">{{value}}</option>
+                    {{/each}}
                 </select>
             </div>
         </form>
+        -->
 
-        <form id="scoreForm">
+        <form id="scoreForm" method="POST">
             <div class="mb-3">
                 <select class="form-select mb-2" aria-label="Session" name="session" id="session">
                     <option>Select Session</option>
-                    <option>10/04/2021</option>
-                    <option>10/11/2021</option>
-                    <option>10/18/2021</option>
+                    {{#each sessions}}
+                        <option>{{this}}</option>
+                    {{/each}}
                 </select>
                 <select class="form-select mb-2" aria-label="Court" name="court" id="court">
                     <option>Select Court</option>
-                    <option>Court 1</option>
-                    <option>Court 2</option>
-                    <option>Court 3</option>
-                    <option>Court 4</option>
+                    {{#each courts}}
+                        <option>{{this}}</option>
+                    {{/each}}
                 </select>
                 <select class="form-select" aria-label="Set" name="set" id="set">
                     <option>Select Set</option>
-                    <option>Set 1</option>
-                    <option>Set 2</option>
-                    <option>Set 3</option>
+                    {{#each sets}}
+                        <option>{{this}}</option>
+                    {{/each}}
                 </select>
-
-
             </div>
 
             <fieldset class="mb-3">

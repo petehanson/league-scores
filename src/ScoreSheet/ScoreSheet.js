@@ -116,25 +116,25 @@ module.exports.ScoreSheet = class ScoreSheet {
 
         entries.push(Object.assign({},entryObject,{
             "Player": input['player1'],
-            "Has Sub": input['hasSub1'],
+            "Has Sub": input['hasSub1'] || 0,
             "Score": input['team1Score']
         }));
 
         entries.push(Object.assign({},entryObject,{
             "Player": input['player2'],
-            "Has Sub": input['hasSub2'],
+            "Has Sub": input['hasSub2'] || 0,
             "Score": input['team1Score']
         }));
 
         entries.push(Object.assign({},entryObject,{
             "Player": input['player3'],
-            "Has Sub": input['hasSub3'],
+            "Has Sub": input['hasSub3'] || 0,
             "Score": input['team2Score']
         }));
 
         entries.push(Object.assign({},entryObject,{
             "Player": input['player4'],
-            "Has Sub": input['hasSub4'],
+            "Has Sub": input['hasSub4'] || 0,
             "Score": input['team2Score']
         }));
 
