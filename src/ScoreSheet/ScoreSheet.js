@@ -1,4 +1,4 @@
-const path = require("path");
+require('dotenv').config()
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 
 const moment = require("moment");
@@ -7,12 +7,12 @@ module.exports.ScoreSheet = class ScoreSheet {
 
     constructor(inputProperties) {
 
-        const configPath = path.resolve(process.cwd(), "./config/googlesheet-service-credentials.json");
-        const creds = require(configPath);
-
         const defaultProperties = {
             documentId: null,
-            credentials: creds,
+            credentials: {
+                client_email: process.env['GOOGLE_SERVICE_ACCOUNT_EMAIL'] || null,
+                private_key: process.env['GOOGLE_PRIVATE_KEY'] || null,
+            },
             configSheetName: "config",
             scoreSheetName: "score entry",
             configRows: 100
@@ -20,7 +20,8 @@ module.exports.ScoreSheet = class ScoreSheet {
         this.properties = Object.assign({}, defaultProperties, inputProperties || {});
 
         if (!!this.properties.documentId == false) throw new Error("ScoreSheet expects a documentId parameter");
-        if (!!this.properties.credentials == false) throw new Error("ScoreSheet expects a credentials parameter");
+        if (!!this.properties.credentials.client_email == false) throw new Error("ScoreSheet expects a credentials.client_email parameter");
+        if (!!this.properties.credentials.private_key == false) throw new Error("ScoreSheet expects a credentials.private_key parameter");
 
         this.doc = null;
         this.isInitialized = false;
