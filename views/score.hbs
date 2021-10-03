@@ -2,39 +2,42 @@
 <h2>{{leagueName}}</h2>
 <p class="lead">Use this form to record each set's score for your court.</p>
 
-<!--
-<form id='leagueForm'>
-    <div class="mb-2">
-        <select class="form-select mb-2" aria-label="League Group" name="leagueGroup" id="leagueGroup">
-            <option>Select League Group</option>
-            {{#each leagues}}
-                <option value="{{key}}">{{value}}</option>
-            {{/each}}
-        </select>
-    </div>
-</form>
--->
+{{#if message}}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{{/if}}
 
-<form id="scoreForm" method="POST">
+
+<form id="scoreForm" method="POST" class="needs-validation" novalidate>
     <div class="mb-3">
-        <select class="form-select mb-2" aria-label="Session" name="session" id="session">
-            <option>Select Session</option>
+        <select class="form-select mb-2" aria-label="Session" name="session" id="session" required>
+            <option value="">Select Session</option>
             {{#each sessions}}
                 <option>{{this}}</option>
             {{/each}}
         </select>
-        <select class="form-select mb-2" aria-label="Court" name="court" id="court">
-            <option>Select Court</option>
+        <div class="invalid-feedback mb-2">
+            Please select a session
+        </div>
+        <select class="form-select mb-2" aria-label="Court" name="court" id="court" required>
+            <option value="">Select Court</option>
             {{#each courts}}
                 <option>{{this}}</option>
             {{/each}}
         </select>
-        <select class="form-select" aria-label="Set" name="set" id="set">
-            <option>Select Set</option>
+        <div class="invalid-feedback mb-2">
+            Please select a court
+        </div>
+        <select class="form-select" aria-label="Set" name="set" id="set" required>
+            <option value="">Select Set</option>
             {{#each sets}}
                 <option>{{this}}</option>
             {{/each}}
         </select>
+        <div class="invalid-feedback">
+            Please select a set
+        </div>
     </div>
 
     <fieldset class="mb-3">
@@ -43,46 +46,48 @@
         <div class="row">
             <div class="col-8">
                 <div class="mb-3">
-                <select class="form-select" aria-label="Select Player" name="player1" id="player1">
-                    <option value="">Select Player</option>
-                    <option>Peter Hanson</option>
-                    <option>Kate Hanson</option>
-                    <option>Tom Nordoff</option>
-                    <option>Ashley Goreczny</option>
-                    <option>Andy Goreczny</option>
-                </select>
-                <input type="checkbox" class="form-check-input" value="1" id="hasSub1" name="hasSub1"/>
-                <label class="form-check-label" for="hasSub1">Has Sub</label>
-                
+
+                    <select class="form-select player" aria-label="Select Player" name="player1" id="player1" required>
+                        <option value="">Select Player</option>
+                        {{#each players}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="checkbox" class="form-check-input" value="1" id="hasSub1" name="hasSub1"/>
+                    <label class="form-check-label" for="hasSub1">Has Sub</label>
+                    <div class="invalid-feedback">
+                        Please select a player
+                    </div>
+
                 </div>
 
+
                 <div class="mb-3">
-                <select class="form-select" aria-label="Select Player" name="player2" id="player2">
-                    <option value="">Select Player</option>
-                    <option>Peter Hanson</option>
-                    <option>Kate Hanson</option>
-                    <option>Tom Nordoff</option>
-                    <option>Ashley Goreczny</option>
-                    <option>Andy Goreczny</option>
-                </select>
-                <input type="checkbox" class="form-check-input" value="1" id="hasSub2" name="hasSub2"/>
-                <label class="form-check-label" for="hasSub2">Has Sub</label>
+                    <select class="form-select player" aria-label="Select Player" name="player2" id="player2" required>
+                        <option value="">Select Player</option>
+                        {{#each players}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="checkbox" class="form-check-input" value="1" id="hasSub2" name="hasSub2"/>
+                    <label class="form-check-label" for="hasSub2">Has Sub</label>
+                    <div class="invalid-feedback">
+                        Please select a player
+                    </div>
                 </div>
 
             </div>
 
             <div class="col-4">
-                <select id="score1" name="score1" class="form-select" aria-label="Score">
+                <select id="score1" name="score1" class="form-select" aria-label="Score" required>
                     <option value="">Score</option>
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
+                    {{#each scores}}
+                        <option>{{this}}</option>
+                    {{/each}}
                 </select>
+                <div class="invalid-feedback">
+                    Please select a score
+                </div>
             </div>
 
         </div>
@@ -94,46 +99,45 @@
         <div class="row">
             <div class="col-8">
                 <div class="mb-3">
-                <select class="form-select" aria-label="Select Player" name="player3" id="player3">
-                    <option value="">Select Player</option>
-                    <option>Peter Hanson</option>
-                    <option>Kate Hanson</option>
-                    <option>Tom Nordoff</option>
-                    <option>Ashley Goreczny</option>
-                    <option>Andy Goreczny</option>
-                </select>
-                <input type="checkbox" class="form-check-input" value="1" id="hasSub3" name="hasSub3"/>
-                <label class="form-check-label" for="hasSub3">Has Sub</label>
-                
+                    <select class="form-select player" aria-label="Select Player" name="player3" id="player3" required>
+                        <option value="">Select Player</option>
+                        {{#each players}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="checkbox" class="form-check-input" value="1" id="hasSub3" name="hasSub3"/>
+                    <label class="form-check-label" for="hasSub3">Has Sub</label>
+                    <div class="invalid-feedback">
+                        Please select a player
+                    </div>
                 </div>
 
                 <div class="mb-3">
-                <select class="form-select" aria-label="Select Player" name="player4" id="player4">
-                    <option value="">Select Player</option>
-                    <option>Peter Hanson</option>
-                    <option>Kate Hanson</option>
-                    <option>Tom Nordoff</option>
-                    <option>Ashley Goreczny</option>
-                    <option>Andy Goreczny</option>
-                </select>
-                <input type="checkbox" class="form-check-input" value="1" id="hasSub4" name="hasSub4"/>
-                <label class="form-check-label" for="hasSub4">Has Sub</label>
+                    <select class="form-select player" aria-label="Select Player" name="player4" id="player4" required>
+                        <option value="">Select Player</option>
+                        {{#each players}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="checkbox" class="form-check-input" value="1" id="hasSub4" name="hasSub4"/>
+                    <label class="form-check-label" for="hasSub4">Has Sub</label>
+                    <div class="invalid-feedback">
+                        Please select a player
+                    </div>
                 </div>
 
             </div>
 
             <div class="col-4">
-                <select id="score2" name="score2" class="form-select" aria-label="Score">
+                <select id="score2" name="score2" class="form-select" aria-label="Score" required>
                     <option value="">Score</option>
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
+                    {{#each scores}}
+                        <option>{{this}}</option>
+                    {{/each}}
                 </select>
+                <div class="invalid-feedback">
+                    Please select a score
+                </div>
             </div>
 
         </div>
@@ -144,16 +148,61 @@
 </form>
 
 <script type="text/javascript">
+    (function() {
+
 
     window.addEventListener('load',(event)=>{
-        console.log("dom loaded");
-        var el = document.querySelector("#leagueGroup");
-        if (el) {
-            el.addEventListener("change",(event)=>{
-                console.log(event.target);
-                console.log(event.target.value);
+
+/*
+        const usedPlayers = [];
+
+        const playerEls = document.querySelectorAll("select.player");
+
+        console.log(playerEls);
+
+        playerEls.forEach((el)=>{
+            el.addEventListener("change",(e)=>{
+
+                const playerName = e.target.value;
+                console.log(playerName);
+
+                const options = document.querySelectorAll('select option[value="' + playerName + '"]');
+                console.log(options);
+                options.forEach((cur)=>{
+                    cur.setAttribute("disabled",true);
+                });
+
             });
-        }
+        });
+*/
+
+        (function () {
+
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        console.log("done");
+        })();
+
+
+
+
     });
+
+    })();
 
 </script>

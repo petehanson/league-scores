@@ -13,20 +13,28 @@ const scoreController = (req,res,next) => {
 
 		if (leagueId === null) throw new Error("League ID can't be null");
 
-		if (req.method == "POST") {
-			const body = req.body;
-			console.log("Body", body);
-		}
 
 		const ss = new ScoreSheet({
 			documentId: leagueConfig[leagueId]['documentId']
 		});
 
+
 		const ssConfigs = await ss.configuration();
 		console.log(ssConfigs);
 
 
+        let message = null;
+
+		if (req.method == "POST") {
+			const body = req.body;
+			console.log("Body", body);
+            await ss.recordScore(body);
+            message = "Saved Scores"
+		}
+
+
 		return Object.assign({
+            message,
             leagueName: leagueConfig[leagueId]['name']
 		},ssConfigs);
 

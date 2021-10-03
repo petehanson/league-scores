@@ -88,8 +88,8 @@ const run = async () => {
         hasSub3: 0,
         player4: "Ed P",
         hasSub4: 1,
-        team1Score: 4,
-        team2Score: 6
+        score1: 4,
+        score2: 6
     }));
 
     return true;
