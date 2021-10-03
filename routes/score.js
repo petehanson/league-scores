@@ -20,14 +20,12 @@ const scoreController = (req,res,next) => {
 
 
 		const ssConfigs = await ss.configuration();
-		console.log(ssConfigs);
-
 
         let message = null;
 
 		if (req.method == "POST") {
 			const body = req.body;
-			console.log("Body", body);
+			console.log("Submitted Body", body);
             await ss.recordScore(body);
             message = "Saved Scores"
 		}
@@ -35,21 +33,21 @@ const scoreController = (req,res,next) => {
 
 		return Object.assign({
             message,
-            leagueName: leagueConfig[leagueId]['name']
+            leagueName: leagueConfig[leagueId]['name'],
+			session: req.body['session'] || await ss.nextSession(),
+			court: req.body['court'] || null,
 		},ssConfigs);
 
     }
 
     run()
         .then((viewData) => {
-			console.log("viewData",viewData);
             res.render('score', viewData);
         })
         .catch((error) => {
 			next(error);
         });
 };
-
 
 
 /* GET/POST score page. */

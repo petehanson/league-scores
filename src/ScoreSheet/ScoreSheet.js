@@ -24,14 +24,13 @@ module.exports.ScoreSheet = class ScoreSheet {
 
         this.doc = null;
         this.isInitialized = false;
+        this.config = null;
     }
 
     async initialize() {
         const doc = new GoogleSpreadsheet(this.properties.documentId);
         await doc.useServiceAccountAuth(this.properties.credentials);
         await doc.loadInfo();
-
-        console.log(doc.sheetCount);
 
         const sheets = doc.sheetsByTitle;
         const sheetNames = Object.keys(sheets);
@@ -44,6 +43,7 @@ module.exports.ScoreSheet = class ScoreSheet {
     }
 
     async configuration() {
+        if (this.config !== null) return this.config;
         if (!this.isInitialized) await this.initialize();
 
         const sheets = this.doc.sheetsByTitle;
@@ -77,6 +77,7 @@ module.exports.ScoreSheet = class ScoreSheet {
             config[cur.toLowerCase()]= columnValues(configSheet,index);
         });
 
+        this.config = config;
         return config;
     }
     /*
@@ -147,4 +148,24 @@ module.exports.ScoreSheet = class ScoreSheet {
         return await entrySheet.addRows(entries);
     }
 
+    // finds the most recent session to today or the passed in date
+
+    async nextSession(inputDt) {
+        const localConfig = await this.configuration();
+
+        const momentSessions = localConfig.sessions.map((cur)=>{
+            return moment(new Date(cur));
+        });
+
+        const compareDt = (inputDt) ? moment(inputDt) : moment();
+
+        const currentSessionIndex = momentSessions.reduce((acc,cur,index)=>{
+            if (compareDt >= cur) {
+                acc = index
+            }
+            return acc;
+        },null);
+
+        return (currentSessionIndex !== null) ? localConfig.sessions[currentSessionIndex] : null;
+    }
 }

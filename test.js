@@ -72,6 +72,7 @@ const run = async () => {
 
     const ss = new ScoreSheet({documentId});
 
+    /*
     const configs = await ss.configuration();
     console.log(configs);
 
@@ -91,6 +92,12 @@ const run = async () => {
         score1: 4,
         score2: 6
     }));
+    */
+
+    console.log(await ss.nextSession());
+    console.log(await ss.nextSession("2021-10-05T20:45:00-05:00"));
+    console.log(await ss.nextSession("2021-10-10T20:45:00-05:00"));
+    console.log(await ss.nextSession("2021-10-11T00:00:00-05:00"));
 
     return true;
 }

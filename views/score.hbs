@@ -17,6 +17,9 @@
                 <option>{{this}}</option>
             {{/each}}
         </select>
+        {{#if session}}
+        <script type="text/javascript">document.querySelector("#session").value = "{{session}}";</script>
+        {{/if}}
         <div class="invalid-feedback mb-2">
             Please select a session
         </div>
@@ -26,6 +29,9 @@
                 <option>{{this}}</option>
             {{/each}}
         </select>
+        {{#if court}}
+        <script type="text/javascript">document.querySelector("#court").value = "{{court}}";</script>
+        {{/if}}
         <div class="invalid-feedback mb-2">
             Please select a court
         </div>
